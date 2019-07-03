@@ -1,9 +1,9 @@
 import { ClientDataService } from '../services/client-data.service';
+import { ShareDataService } from '../services/share-data.service';
 import { TaskDataService } from '../services/task-data.service';
 import { Client } from '../services/client';
 import { Component } from '@angular/core';
 import { Task } from '../services/task';
-import { ShareDataService } from '../services/share-data.service';
 
 @Component({
   selector: 'home',
@@ -14,8 +14,7 @@ export class HomeComponent {
   clients: Client[];
   tasks: Task[];
   task: Task = new Task();
-  client: Client = new Client();
-  clientId: number;
+  clientId: number = 1;
   isAddingTask: boolean = false;
 
   constructor(
@@ -27,7 +26,10 @@ export class HomeComponent {
   ngOnInit() {
     this.clientDataService
       .getClients()
-      .subscribe((data: Client[]) => this.clients = data);
+      .subscribe((data: Client[]) => {
+        this.clients = data;
+        this.clients.sort((a, b) => a.firstName > b.firstName ? 1 : -1);
+      });
   }
 
   showTaskAdding() {
@@ -47,7 +49,13 @@ export class HomeComponent {
 
     this.taskDataService
       .createTask(this.task)
-      .subscribe();
+      .subscribe(_ => { }, _ => { },
+        () => {
+          this.isAddingTask = false;
+          this.taskDataService
+            .getClientTasks(this.clientId)
+            .subscribe((data: Task[]) => this.tasks = data);
+        });
   }
 
   editTask(id: number) {
@@ -61,5 +69,13 @@ export class HomeComponent {
         () => this.taskDataService
           .getClientTasks(this.clientId)
           .subscribe((data: Task[]) => this.tasks = data))
+  }
+
+  userFilterChange(value: string) {
+    if (value === 'Name') {
+      this.clients.sort((a, b) => a.firstName > b.firstName ? 1 : -1);
+    } else if (value === 'City') {
+      this.clients.sort((a, b) => a.address > b.address ? 1 : -1);
+    }
   }
 }

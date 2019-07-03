@@ -8,8 +8,6 @@ namespace Test_Task.Controllers
 	[Route("api/tasks")]
 	public class TasksController : Controller
 	{
-		public TasksController() { }
-
 		[HttpGet("{clientId}")]
 		public IEnumerable<Task> GetClientTasks(int clientId)
 		{

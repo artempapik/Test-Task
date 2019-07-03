@@ -12,7 +12,6 @@ namespace Test_Task.Models
 
 		public string Address { get; set; }
 
-		//change to one-to-many relationship
 		public string Phone { get; set; }
 
 		public List<Task> Tasks { get; set; }

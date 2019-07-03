@@ -1,6 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
+      <div>
+        Filter by:
+        <select (change)="userFilterChange($event.target.value)">
+          <option value="Name">Name</option>
+          <option value="City">City</option>
+        </select>
+      </div>
       <div *ngFor="let client of clients">
         <div>
           {{client.firstName}} {{client.lastName}}
@@ -8,8 +15,8 @@
         <div>
           {{client.address}}
         </div>
-        <div>
-          {{client.phone}}
+        <div *ngFor="let p of client.phone.split(';')">
+          {{p}}
         </div>
         <div>
           <button (click)="viewClientTasks(client.id)">

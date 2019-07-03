@@ -25,7 +25,7 @@ namespace Test_Task.Models
 						FirstName = "artem",
 						LastName = "yakovlev",
 						Address = "kp2b",
-						Phone = "2-93-23"
+						Phone = "2-93-23;2-78-27"
 					},
 					new Client
 					{
