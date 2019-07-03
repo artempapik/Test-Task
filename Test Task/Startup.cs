@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Test_Task.Models;
 
 namespace Test_Task
 {
@@ -15,8 +16,11 @@ namespace Test_Task
 
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-			services.AddSpaStaticFiles(configuration =>configuration.RootPath = "ClientApp/dist");
+			services
+				.AddDbContext<ApplicationContext>()
+				.AddMvc()
+				.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+			services.AddSpaStaticFiles(configuration => configuration.RootPath = "ClientApp/dist");
 		}
 
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)

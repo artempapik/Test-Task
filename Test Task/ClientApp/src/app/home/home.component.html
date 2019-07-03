@@ -1,1 +1,68 @@
-<h1>hello world</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div *ngFor="let client of clients">
+        <div>
+          {{client.firstName}} {{client.lastName}}
+        </div>
+        <div>
+          {{client.address}}
+        </div>
+        <div>
+          {{client.phone}}
+        </div>
+        <div>
+          <button (click)="viewClientTasks(client.id)">
+            view tasks
+          </button>
+        </div>
+        <br />
+      </div>
+    </div>
+    <div class="col-6">
+      <div *ngIf="isAddingTask">
+        <div>
+          name
+        </div>
+        <input [(ngModel)]="task.name" />
+        <div>
+          description
+        </div>
+        <input [(ngModel)]="task.description" />
+        <!--<div>
+      start time
+    </div>
+    <input [(ngModel)]="task.startTime" />
+    <div>
+      end time
+    </div>
+    <input [(ngModel)]="task.endTime" />-->
+        <div>
+          <button (click)="addTask()">Add</button>
+        </div>
+      </div>
+      <div>
+        <button (click)="showTaskAdding()">Add a Task</button>
+      </div>
+      <div *ngFor="let task of tasks">
+        <div>
+          {{task.name}}
+        </div>
+        <div>
+          {{task.description}}
+        </div>
+        <!--<div>
+          {{task.startTime}}
+        </div>
+        <div>
+          {{task.endTime}}
+        </div>-->
+        <div>
+          <button (click)="editTask(task.id)">Edit</button>
+          <button (click)="deleteTask(task.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>

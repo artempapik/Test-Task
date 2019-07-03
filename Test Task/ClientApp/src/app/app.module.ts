@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { ClientDataService } from './services/client-data.service';
+import { TaskDataService } from './services/task-data.service';
 
 @NgModule({
   imports: [
@@ -20,7 +22,10 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     HomeComponent
   ],
-  providers: [],
+  providers: [
+    ClientDataService,
+    TaskDataService
+  ],
   bootstrap: [AppComponent]
 })
 
