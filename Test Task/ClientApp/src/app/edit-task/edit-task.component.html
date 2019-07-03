@@ -1,4 +1,24 @@
 <div class="container">
   <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div>
+        Name
+      </div>
+      <input [(ngModel)]="task.name" />
+      <div>
+        Description
+      </div>
+      <input [(ngModel)]="task.description" />
+      <div>
+        Client address
+      </div>
+      <input [(ngModel)]="task.clientAddress" />
+      <div>
+        <button (click)="editTask()" routerLink="/">Edit</button>
+        <button routerLink="/">Cancel</button>
+      </div>
+    </div>
+    <div class="col-3"></div>
   </div>
 </div>

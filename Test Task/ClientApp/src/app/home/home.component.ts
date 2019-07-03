@@ -3,6 +3,7 @@ import { TaskDataService } from '../services/task-data.service';
 import { Client } from '../services/client';
 import { Component } from '@angular/core';
 import { Task } from '../services/task';
+import { ShareDataService } from '../services/share-data.service';
 
 @Component({
   selector: 'home',
@@ -19,7 +20,8 @@ export class HomeComponent {
 
   constructor(
     private clientDataService: ClientDataService,
-    private taskDataService: TaskDataService
+    private taskDataService: TaskDataService,
+    private shareDataService: ShareDataService
   ) { }
 
   ngOnInit() {
@@ -49,7 +51,7 @@ export class HomeComponent {
   }
 
   editTask(id: number) {
-
+    this.shareDataService.taskId = id;
   }
 
   deleteTask(id: number) {

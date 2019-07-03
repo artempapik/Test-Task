@@ -58,7 +58,7 @@
           {{task.endTime}}
         </div>-->
         <div>
-          <button (click)="editTask(task.id)">Edit</button>
+          <button (click)="editTask(task.id)" routerLink="edit-task">Edit</button>
           <button (click)="deleteTask(task.id)">Delete</button>
         </div>
       </div>
