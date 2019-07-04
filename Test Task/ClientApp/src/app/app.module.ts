@@ -1,4 +1,3 @@
-//layout
 //dates
 
 import { BrowserModule } from '@angular/platform-browser';

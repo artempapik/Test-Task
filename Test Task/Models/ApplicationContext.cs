@@ -22,26 +22,42 @@ namespace Test_Task.Models
 					new Client
 					{
 						Id = 1,
-						FirstName = "artem",
-						LastName = "yakovlev",
-						Address = "kp2b",
-						Phone = "2-93-23;2-78-27"
+						FirstName = "Vanya",
+						LastName = "Popov",
+						Address = "Alyaska",
+						Phone = "096-044-38-42;068-448-02-56"
 					},
 					new Client
 					{
 						Id = 2,
-						FirstName = "kolya",
-						LastName = "irzhov",
-						Address = "burhava",
-						Phone = "50-65-68"
+						FirstName = "Artem",
+						LastName = "Yakovlev",
+						Address = "Ogaio",
+						Phone = "098-278-16-76;065-545-22-21"
 					},
 					new Client
 					{
 						Id = 3,
-						FirstName = "oleg",
-						LastName = "kaidanny",
-						Address = "anoshkina",
-						Phone = "2-72-22"
+						FirstName = "Tolik",
+						LastName = "Sidorov",
+						Address = "Tokio",
+						Phone = "098-996-86-32"
+					},
+					new Client
+					{
+						Id = 4,
+						FirstName = "Masha",
+						LastName = "Gap",
+						Address = "Moskow",
+						Phone = "067-666-44-54"
+					},
+					new Client
+					{
+						Id = 5,
+						FirstName = "Valik",
+						LastName = "Surname",
+						Address = "Kyiv",
+						Phone = "050-050-99-55;063-224-33-34"
 					}
 				}
 			);
