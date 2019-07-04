@@ -1,24 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
-      <div>
-        Name
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Name</span>
+        </div>
+        <input class="form-control" [(ngModel)]="task.name" />
       </div>
-      <input [(ngModel)]="task.name" />
-      <div>
-        Description
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Description</span>
+        </div>
+        <input class="form-control" [(ngModel)]="task.description" />
       </div>
-      <input [(ngModel)]="task.description" />
-      <div>
-        Client address
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Client address</span>
+        </div>
+        <input class="form-control" [(ngModel)]="task.clientAddress" />
       </div>
-      <input [(ngModel)]="task.clientAddress" />
-      <div>
-        <button (click)="editTask()" routerLink="/">Edit</button>
-        <button routerLink="/">Cancel</button>
+      <div class="mt-10">
+        <button class="btn btn-primary mr-10" (click)="editTask()" routerLink="/">Edit</button>
+        <button class="btn btn-danger" routerLink="/">Cancel</button>
       </div>
     </div>
-    <div class="col-3"></div>
   </div>
 </div>

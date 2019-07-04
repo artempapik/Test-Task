@@ -37,6 +37,7 @@ export class HomeComponent {
   }
 
   viewClientTasks(clientId: number) {
+    this.isAddingTask = false;
     this.clientId = clientId;
 
     this.taskDataService

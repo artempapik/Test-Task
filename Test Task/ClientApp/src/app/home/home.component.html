@@ -1,16 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-2">
       <div>
         Filter by:
-        <select (change)="userFilterChange($event.target.value)">
+        <select class="browser-default custom-select" (change)="userFilterChange($event.target.value)">
           <option value="Name">Name</option>
           <option value="City">City</option>
         </select>
       </div>
+      <br />
       <div *ngFor="let client of clients">
         <div>
-          {{client.firstName}} {{client.lastName}}
+          <button class="btn btn-primary" (click)="viewClientTasks(client.id)">
+            {{client.firstName}} {{client.lastName}}
+          </button>
         </div>
         <div>
           {{client.address}}
@@ -18,24 +21,23 @@
         <div *ngFor="let p of client.phone.split(';')">
           {{p}}
         </div>
-        <div>
-          <button (click)="viewClientTasks(client.id)">
-            view tasks
-          </button>
-        </div>
         <br />
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-4">
       <div *ngIf="isAddingTask">
-        <div>
-          name
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Name</span>
+          </div>
+          <input class="form-control" [(ngModel)]="task.name" />
         </div>
-        <input [(ngModel)]="task.name" />
-        <div>
-          description
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Description</span>
+          </div>
+          <input class="form-control" [(ngModel)]="task.description" />
         </div>
-        <input [(ngModel)]="task.description" />
         <!--<div>
       start time
     </div>
@@ -45,15 +47,15 @@
     </div>
     <input [(ngModel)]="task.endTime" />-->
         <div>
-          <button (click)="addTask()">Add</button>
+          <button class="btn btn-warning" (click)="addTask()">Add</button>
         </div>
       </div>
       <div>
-        <button (click)="showTaskAdding()">Add a Task</button>
+        <button class="btn btn-dark mt-10" (click)="showTaskAdding()">Add a Task</button>
       </div>
-      <div *ngFor="let task of tasks">
+      <div class="mt-20" *ngFor="let task of tasks">
         <div>
-          {{task.name}}
+          <span class="badge badge-secondary size-16">{{task.name}}</span>
         </div>
         <div>
           {{task.description}}
@@ -64,12 +66,11 @@
         <div>
           {{task.endTime}}
         </div>-->
-        <div>
-          <button (click)="editTask(task.id)" routerLink="edit-task">Edit</button>
-          <button (click)="deleteTask(task.id)">Delete</button>
+        <div class="mt-10">
+          <button class="btn btn-warning mr-10" (click)="editTask(task.id)" routerLink="edit-task">Edit</button>
+          <button class="btn btn-danger" (click)="deleteTask(task.id)">Delete</button>
         </div>
       </div>
     </div>
-    <div class="col"></div>
   </div>
 </div>
