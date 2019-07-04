@@ -32,20 +32,26 @@
           </div>
           <input class="form-control" [(ngModel)]="task.name" />
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group mb-10">
           <div class="input-group-prepend">
             <span class="input-group-text">Description</span>
           </div>
-          <input class="form-control" [(ngModel)]="task.description" />
+          <textarea class="form-control" [(ngModel)]="task.description"></textarea>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Client adress</span>
+          </div>
+          <input class="form-control" [(ngModel)]="task.clientAddress" />
         </div>
         <!--<div>
-      start time
-    </div>
-    <input [(ngModel)]="task.startTime" />
-    <div>
-      end time
-    </div>
-    <input [(ngModel)]="task.endTime" />-->
+    start time
+  </div>
+  <input [(ngModel)]="task.startTime" />
+  <div>
+    end time
+  </div>
+  <input [(ngModel)]="task.endTime" />-->
         <div>
           <button class="btn btn-warning" (click)="addTask()">Add</button>
         </div>
@@ -59,6 +65,9 @@
         </div>
         <div>
           {{task.description}}
+        </div>
+        <div>
+          {{task.clientAddress}}
         </div>
         <!--<div>
           {{task.startTime}}
