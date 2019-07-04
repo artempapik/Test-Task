@@ -20,6 +20,18 @@
         </div>
         <input class="form-control" [(ngModel)]="task.clientAddress" />
       </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Start time</span>
+        </div>
+        <input placeholder="dd/mm/yyyy" class="form-control" [(ngModel)]="task.startTime" />
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">End time</span>
+        </div>
+        <input placeholder="dd/mm/yyyy" class="form-control" [(ngModel)]="task.endTime" />
+      </div>
       <div class="mt-10">
         <button class="btn btn-primary mr-10" (click)="editTask()" routerLink="/">Edit</button>
         <button class="btn btn-danger" routerLink="/">Cancel</button>

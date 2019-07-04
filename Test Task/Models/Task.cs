@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace Test_Task.Models
 {
@@ -12,9 +13,15 @@ namespace Test_Task.Models
 
 		public string ClientAddress { get; set; }
 
-		//public DateTime StartTime { get; set; }
+		[NotMapped]
+		public string StartTime { get; set; }
 
-		//public DateTime EndTime { get; set; }
+		[NotMapped]
+		public string EndTime { get; set; }
+
+		public DateTime StartDate { get; set; }
+
+		public DateTime EndDate { get; set; }
 
 		public int ClientId { get; set; }
 

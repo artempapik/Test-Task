@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using Test_Task.Models;
 using System.Linq;
+using System;
 
 namespace Test_Task.Controllers
 {
@@ -13,15 +15,26 @@ namespace Test_Task.Controllers
 		{
 			using (var db = new ApplicationContext())
 			{
-				return db.Tasks
+				var tasks = db.Tasks
 					.Where(task => task.ClientId == clientId)
 					.ToList();
+
+				foreach (var task in tasks)
+				{
+					task.StartTime = task.StartDate.ToString("dd/MM/yyyy");
+					task.EndTime = task.EndDate.ToString("dd/MM/yyyy");
+				}
+
+				return tasks;
 			}
 		}
 
 		[HttpPost]
 		public IActionResult Post([FromBody]Task task)
 		{
+			task.StartDate = DateTime.ParseExact(task.StartTime, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+			task.EndDate = DateTime.ParseExact(task.EndTime, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
 			using (var db = new ApplicationContext())
 			{
 				db.Tasks.Add(task);
@@ -61,6 +74,12 @@ namespace Test_Task.Controllers
 						t.Name = task.Name;
 						t.Description = task.Description;
 						t.ClientAddress = task.ClientAddress;
+
+						t.StartTime = task.StartTime;
+						t.EndTime = task.EndTime;
+						t.StartDate = DateTime.ParseExact(t.StartTime, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+						t.EndDate = DateTime.ParseExact(t.EndTime, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
 						db.SaveChanges();
 						return Ok(task);
 					}
